@@ -6,7 +6,14 @@ import java.util.regex.Pattern;
 public class ValidationRegex {
     // 이메일 형식 체크
     public static boolean isRegexEmail(String target) {
-        String regex = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+        String regex = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]$";
+        Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(target);
+        return matcher.find();
+    }
+
+    public static boolean isPasswordFit(String target) {
+        String regex = "^[a-zA-Z\\\\d`~!@#$%^&*()-_=+]$";
         Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(target);
         return matcher.find();

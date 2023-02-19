@@ -2,11 +2,8 @@ package com.example.demo.src.Video;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
-import com.example.demo.src.Video.Model.GetVideoLinkRes;
-import com.example.demo.src.Video.Model.GetVideoListPageRes;
-import com.example.demo.src.Video.Model.GetVideoListPicRes;
+import com.example.demo.src.Video.Model.*;
 import com.example.demo.utils.JwtService;
-import com.fasterxml.jackson.databind.ser.Serializers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,115 +69,40 @@ public class VideoController {
         }
     }
     /**
-     * 시리즈 좋아요 생성 API
-     * [POST] video/like/{videoListIdx}
+     * 시리즈 평가 생성 API
+     * [POST] video/critic/{videoListIdx}
      * */
     @ResponseBody
-    @PostMapping("/like/{videoListIdx}")
-    public BaseResponse<String> postLike(@PathVariable("videoListIdx") int videoListIdx, @RequestParam int profileIdx, int userIdx) {
+    @PostMapping("/critic/{videoListIdx}")
+    public BaseResponse<String> postCritic(@RequestBody PostVideoCriticReq postVideoCriticReq) {
         try{
             int userIdxByJwt = jwtService.getUserIdx();
             //userIdx와 접근한 유저가 같은지 확인
-            if(userIdx != userIdxByJwt){
+            if(postVideoCriticReq.getUserIdx() != userIdxByJwt){
                 return new BaseResponse<>(INVALID_USER_JWT);
             }
 
-            return new BaseResponse<>(videoService.postLike(videoListIdx, profileIdx));
+            return new BaseResponse<>(videoService.postCritic(postVideoCriticReq));
         }catch (BaseException exception) {
             return new BaseResponse<>((exception.getStatus()));
         }
     }
+
     /**
-     * 시리즈 좋아요 삭제 API
-     * [PATCH] video/like/{videoListIdx}
+     * 시리즈 평가 삭제 API
+     * [PATCH] video/critic/{videoListIdx}
      * */
     @ResponseBody
-    @PatchMapping("/like/{videoListIdx}")
-    public BaseResponse<String> patchLike(@PathVariable("videoListIdx") int videoListIdx, @RequestParam int profileIdx, int userIdx) {
+    @PatchMapping("/critic/{videoListIdx}")
+    public BaseResponse<String> patchCritic(@RequestBody PatchVideoCriticReq patchVideoCriticReq) {
         try{
             int userIdxByJwt = jwtService.getUserIdx();
             //userIdx와 접근한 유저가 같은지 확인
-            if(userIdx != userIdxByJwt){
+            if(patchVideoCriticReq.getUserIdx() != userIdxByJwt){
                 return new BaseResponse<>(INVALID_USER_JWT);
             }
 
-            return new BaseResponse<>(videoService.patchLike(videoListIdx, profileIdx));
-        }catch (BaseException exception) {
-            return new BaseResponse<>((exception.getStatus()));
-        }
-    }
-    /**
-     * 시리즈 최고에요 생성 API
-     * [POST] video/best/{videoListIdx}
-     * */
-    @ResponseBody
-    @PostMapping("/best/{videoListIdx}")
-    public BaseResponse<String> postBest(@PathVariable("videoListIdx") int videoListIdx, @RequestParam int profileIdx, int userIdx) {
-        try{
-            int userIdxByJwt = jwtService.getUserIdx();
-            //userIdx와 접근한 유저가 같은지 확인
-            if(userIdx != userIdxByJwt){
-                return new BaseResponse<>(INVALID_USER_JWT);
-            }
-
-            return new BaseResponse<>(videoService.postBest(videoListIdx, profileIdx));
-        }catch (BaseException exception) {
-            return new BaseResponse<>((exception.getStatus()));
-        }
-    }
-    /**
-     * 시리즈 최고에요 삭제 API
-     * [PATCH] video/best/{videoListIdx}
-     * */
-    @ResponseBody
-    @PatchMapping("/best/{videoListIdx}")
-    public BaseResponse<String> patchBest(@PathVariable("videoListIdx") int videoListIdx, @RequestParam int profileIdx, int userIdx) {
-        try{
-            int userIdxByJwt = jwtService.getUserIdx();
-            //userIdx와 접근한 유저가 같은지 확인
-            if(userIdx != userIdxByJwt){
-                return new BaseResponse<>(INVALID_USER_JWT);
-            }
-
-            return new BaseResponse<>(videoService.patchBest(videoListIdx, profileIdx));
-        }catch (BaseException exception) {
-            return new BaseResponse<>((exception.getStatus()));
-        }
-    }
-    /**
-     * 시리즈 싫어요 생성 API
-     * [POST] /video/worst/{videoListIdx}
-     * */
-    @ResponseBody
-    @PostMapping("/worst/{videoListIdx}")
-    public BaseResponse<String> postWorst(@PathVariable("videoListIdx") int videoListIdx, @RequestParam int profileIdx, int userIdx) {
-        try{
-            int userIdxByJwt = jwtService.getUserIdx();
-            //userIdx와 접근한 유저가 같은지 확인
-            if(userIdx != userIdxByJwt){
-                return new BaseResponse<>(INVALID_USER_JWT);
-            }
-
-            return new BaseResponse<>(videoService.postWorst(videoListIdx, profileIdx));
-        }catch (BaseException exception) {
-            return new BaseResponse<>((exception.getStatus()));
-        }
-    }
-    /**
-     * 시리즈 싫어요 삭제 API
-     * [PATCH] /video/worst/{videoListIdx}
-     * */
-    @ResponseBody
-    @PatchMapping("/worst/{videoListIdx}")
-    public BaseResponse<String> patchWorst(@PathVariable("videoListIdx") int videoListIdx, @RequestParam int profileIdx, int userIdx) {
-        try{
-            int userIdxByJwt = jwtService.getUserIdx();
-            //userIdx와 접근한 유저가 같은지 확인
-            if(userIdx != userIdxByJwt){
-                return new BaseResponse<>(INVALID_USER_JWT);
-            }
-
-            return new BaseResponse<>(videoService.patchWorst(videoListIdx, profileIdx));
+            return new BaseResponse<>(videoService.patchCritic(patchVideoCriticReq));
         }catch (BaseException exception) {
             return new BaseResponse<>((exception.getStatus()));
         }

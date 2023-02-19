@@ -185,11 +185,79 @@ public class UserDao {
                 ), insertedIdx);
     }
 
-    public String patchProfile(int profileIdx) {
+    public String deleteProfile(int profileIdx) {
         String deleteProfileQuery = "update Profile set staus = 'INACTIVE' where profileIdx = ?";
 
         this.jdbcTemplate.update(deleteProfileQuery, profileIdx);
 
         return "프로파일 삭제에 성공했습니다.";
+    }
+
+    public String patchProfile(PatchProfileReq patchProfileReq) {
+        String patchProfileQuery = "update Profile set ageLimit = ?, profileName = ?, language = ? where profileIdx = ? and staus = 'ACTIVE';";
+
+        Object[] queryParams = new Object[]{
+                patchProfileReq.getAgeLimit(),
+                patchProfileReq.getProfileName(),
+                patchProfileReq.getLang()
+        };
+
+        this.jdbcTemplate.update(patchProfileQuery, queryParams);
+
+        return "프로파일 수정에 성공하였습니다.";
+    }
+
+    public String postGameNickname(PostGameNickReq postGameNickReq) {
+        String postQuery = "update Profile set gameNickname = ? where profileIdx = ? and staus = 'ACTIVE";
+
+        Object[] queryParams = new Object[]{
+                postGameNickReq.getGameNickname(),
+                postGameNickReq.getProfileIdx()
+        };
+
+        this.jdbcTemplate.update(postQuery, queryParams);
+
+        return "게임닉네임 설정에 성공하였습니다.";
+
+
+    }
+
+    public String patchUserPassword(PatchUserPasswordReq patchUserPasswordReq) {
+        String patchQuery = "update User set PW = ? where userIdx = ? and staus = 'ACTIVE';";
+
+        Object[] queryParams = new Object[]{
+                patchUserPasswordReq.getPassword(),
+                patchUserPasswordReq.getUserIdx()
+        };
+
+        this.jdbcTemplate.update(patchQuery, queryParams);
+
+        return "비밀번호 변경에 성공하였습니다.";
+    }
+
+    public String patchUserEmail(PatchUserEmailReq patchUserEmailReq) {
+        String patchQuery = "update User set email = ? where userIdx = ? and staus = 'ACTIVE';";
+
+        Object[] queryParams = new Object[]{
+                patchUserEmailReq.getEmail(),
+                patchUserEmailReq.getUserIdx()
+        };
+
+        this.jdbcTemplate.update(patchQuery, queryParams);
+
+        return "이메일 변경에 성공하였습니다.";
+    }
+
+    public String patchuserPhone(PatchUserPhoneReq patchUserPhoneReq) {
+        String patchQuery = "update User set phone = ? where userIdx = ? and staus = 'ACTIVE';";
+
+        Object[] queryParams = new Object[]{
+                patchUserPhoneReq.getPhone(),
+                patchUserPhoneReq.getUserIdx()
+        };
+
+        this.jdbcTemplate.update(patchQuery, queryParams);
+
+        return "휴대폰 변경에 성공하였습니다.";
     }
 }

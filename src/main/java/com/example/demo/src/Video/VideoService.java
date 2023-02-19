@@ -2,6 +2,8 @@ package com.example.demo.src.Video;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponseStatus;
+import com.example.demo.src.Video.Model.PatchVideoCriticReq;
+import com.example.demo.src.Video.Model.PostVideoCriticReq;
 import com.example.demo.utils.JwtService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,50 +41,17 @@ public class VideoService {
         }
     }
 
-    public String postLike(int videoListIdx, int profileIdx) throws BaseException{
+    public String postCritic(PostVideoCriticReq postVideoCriticReq) throws BaseException{
         try{
-            return videoDao.postLike(videoListIdx, profileIdx);
+            return videoDao.postCritic(postVideoCriticReq);
         }catch (Exception exception) {
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
         }
     }
 
-    public String patchLike(int videoListIdx, int profileIdx) throws BaseException{
+    public String patchCritic(PatchVideoCriticReq patchVideoCriticReq) throws BaseException{
         try{
-            return videoDao.patchLike(videoListIdx, profileIdx);
-        }catch (Exception exception) {
-            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
-        }
-    }
-
-    public String postBest(int videoListIdx, int profileIdx)  throws BaseException{
-        try{
-            return videoDao.postBest(videoListIdx, profileIdx);
-        }catch (Exception exception) {
-            logger.error("Error In postBest", exception);
-            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
-        }
-    }
-
-    public String patchBest(int videoListIdx, int profileIdx) throws BaseException{
-        try{
-            return videoDao.patchBest(videoListIdx, profileIdx);
-        }catch (Exception exception) {
-            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
-        }
-    }
-
-    public String postWorst(int videoListIdx, int profileIdx)  throws BaseException{
-        try{
-            return videoDao.postWorst(videoListIdx, profileIdx);
-        }catch (Exception exception) {
-            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
-        }
-    }
-
-    public String patchWorst(int videoListIdx, int profileIdx) throws BaseException{
-        try{
-            return videoDao.patchWorst(videoListIdx, profileIdx);
+            return videoDao.patchCritic(patchVideoCriticReq);
         }catch (Exception exception) {
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
         }

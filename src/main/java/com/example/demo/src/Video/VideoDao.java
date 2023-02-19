@@ -1,8 +1,6 @@
 package com.example.demo.src.Video;
 
-import com.example.demo.src.Video.Model.GetVideoLinkRes;
-import com.example.demo.src.Video.Model.GetVideoListPageRes;
-import com.example.demo.src.Video.Model.GetVideoListPicRes;
+import com.example.demo.src.Video.Model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -44,76 +42,64 @@ public class VideoDao {
         return "내가 찜한 컨텐츠 삭제 성공";
     }
 
-    public String postLike(int videoListIdx, int profileIdx) {
-        String checkRowExistQuery = "select exists(select profileIdx, videoListIdx from VideoCriticGood where profileIdx = ? and videoListIdx = ? )";
-        String insertQuery = "insert into VideoCriticGood (profileIdx, videoListIdx) values(?, ?);";
-        String updateQuery = "update VideoCriticGood set status = 'ACTIVE' where profileIdx = ? and videoListIdx = ?;";
+    public String postCritic(PostVideoCriticReq postVideoCriticReq) {
+        String checkGoodRowExistQuery = "select exists(select profileIdx, videoListIdx from VideoCriticGood where profileIdx = ? and videoListIdx = ? )";
+        String insertGoodQuery = "insert into VideoCriticGood (profileIdx, videoListIdx) values(?, ?);";
+        String updateGoodQuery = "update VideoCriticGood set status = 'ACTIVE' where profileIdx = ? and videoListIdx = ?;";
 
-        Object[] queryParams = new Object[] {profileIdx, videoListIdx};
+        String checkBestRowExistQuery = "select exists(select profileIdx, videoListIdx from VideoCriticBest where profileIdx = ? and videoListIdx = ? )";
+        String insertBestQuery = "insert into VideoCriticBest (profileIdx, videoListIdx) values(?, ?);";
+        String updateBestQuery = "update VideoCriticBest set staus = 'ACTIVE' where profileIdx = ? and videoListIdx = ?;";
 
-        boolean checkExist = this.jdbcTemplate.queryForObject(checkRowExistQuery, int.class, queryParams) == 1;
+        String checkWorstRowExistQuery = "select exists(select profileIdx, videoListIdx from VideoCriticWorst where profileIdx = ? and videoListIdx = ? )";
+        String insertWorstQuery = "insert into VideoCriticWorst (profileIdx, videoListIdx) values(?, ?);";
+        String updateWorstQuery = "update VideoCriticWorst set status = 'ACTIVE' where profileIdx = ? and videoListIdx = ?;";
 
-        if(checkExist) this.jdbcTemplate.update(updateQuery, queryParams);
-        else this.jdbcTemplate.update(insertQuery, queryParams);
+        Object[] queryParams = new Object[] {postVideoCriticReq.getProfileIdx(), postVideoCriticReq.getVideoListIdx()};
 
-        return "시리즈 좋아요 설정 성공";
+        if(postVideoCriticReq.getCriticIdx() == 0){
+            boolean checkExist = this.jdbcTemplate.queryForObject(checkGoodRowExistQuery, int.class, queryParams) == 1;
+
+            if(checkExist) this.jdbcTemplate.update(updateGoodQuery, queryParams);
+            else this.jdbcTemplate.update(insertGoodQuery, queryParams);
+
+            return "시리즈 좋아요 설정 성공";
+        } else if (postVideoCriticReq.getCriticIdx() == 1) {
+            boolean checkExist = this.jdbcTemplate.queryForObject(checkBestRowExistQuery, int.class, queryParams) == 1;
+
+            if(checkExist) this.jdbcTemplate.update(updateBestQuery, queryParams);
+            else this.jdbcTemplate.update(insertBestQuery, queryParams);
+
+            return "시리즈 최고에요 설정 성공";
+        } else {
+            boolean checkExist = this.jdbcTemplate.queryForObject(checkWorstRowExistQuery, int.class, queryParams) == 1;
+
+            if(checkExist) this.jdbcTemplate.update(updateWorstQuery, queryParams);
+            else this.jdbcTemplate.update(insertWorstQuery, queryParams);
+
+            return "시리즈 싫어요 설정 성공";
+        }
+
+
     }
 
-    public String patchLike(int videoListIdx, int profileIdx) {
-        String updateQuery = "update VideoCriticGood set status = 'INACTIVE' where profileIdx = ? and videoListIdx = ?;";
-        Object[] queryParams = new Object[] {profileIdx, videoListIdx};
+    public String patchCritic(PatchVideoCriticReq patchVideoCriticReq) {
+        String updateGoodQuery = "update VideoCriticGood set status = 'INACTIVE' where profileIdx = ? and videoListIdx = ?;";
+        String updateBestQuery = "update VideoCriticBest set staus = 'INACTIVE' where profileIdx = ? and videoListIdx = ?;";
+        String updateWorstQuery = "update VideoCriticWorst set status = 'INACTIVE' where profileIdx = ? and videoListIdx = ?;";
 
-        this.jdbcTemplate.update(updateQuery, queryParams);
-
-        return "시리즈 좋아요 삭제 성공";
-    }
-
-    public String postBest(int videoListIdx, int profileIdx) {
-        String checkRowExistQuery = "select exists(select profileIdx, videoListIdx from VideoCriticBest where profileIdx = ? and videoListIdx = ? )";
-        String insertQuery = "insert into VideoCriticBest (profileIdx, videoListIdx) values(?, ?);";
-        String updateQuery = "update VideoCriticBest set staus = 'ACTIVE' where profileIdx = ? and videoListIdx = ?;";
-
-        Object[] queryParams = new Object[] {profileIdx, videoListIdx};
-
-        boolean checkExist = this.jdbcTemplate.queryForObject(checkRowExistQuery, int.class, queryParams) == 1;
-
-        if(checkExist) this.jdbcTemplate.update(updateQuery, queryParams);
-        else this.jdbcTemplate.update(insertQuery, queryParams);
-
-        return "시리즈 최고에요 설정 성공";
-    }
-
-    public String patchBest(int videoListIdx, int profileIdx) {
-        String updateQuery = "update VideoCriticBest set staus = 'INACTIVE' where profileIdx = ? and videoListIdx = ?;";
-        Object[] queryParams = new Object[] {profileIdx, videoListIdx};
-
-        this.jdbcTemplate.update(updateQuery, queryParams);
-
-        return "시리즈 최고에요 삭제 성공";
-    }
-
-    public String postWorst(int videoListIdx, int profileIdx) {
-        String checkRowExistQuery = "select exists(select profileIdx, videoListIdx from VideoCriticWorst where profileIdx = ? and videoListIdx = ? )";
-        String insertQuery = "insert into VideoCriticWorst (profileIdx, videoListIdx) values(?, ?);";
-        String updateQuery = "update VideoCriticWorst set status = 'ACTIVE' where profileIdx = ? and videoListIdx = ?;";
-
-        Object[] queryParams = new Object[] {profileIdx, videoListIdx};
-
-        boolean checkExist = this.jdbcTemplate.queryForObject(checkRowExistQuery, int.class, queryParams) == 1;
-
-        if(checkExist) this.jdbcTemplate.update(updateQuery, queryParams);
-        else this.jdbcTemplate.update(insertQuery, queryParams);
-
-        return "시리즈 싫어요 설정 성공";
-    }
-
-    public String patchWorst(int videoListIdx, int profileIdx) {
-        String updateQuery = "update VideoCriticWorst set status = 'INACTIVE' where profileIdx = ? and videoListIdx = ?;";
-        Object[] queryParams = new Object[] {profileIdx, videoListIdx};
-
-        this.jdbcTemplate.update(updateQuery, queryParams);
-
-        return "시리즈 싫어요 삭제 성공";
+        Object[] queryParams = new Object[] {patchVideoCriticReq.getProfileIdx(), patchVideoCriticReq.getVideoListIdx()};
+        
+        if (patchVideoCriticReq.getCriticIdx() == 0){
+            this.jdbcTemplate.update(updateGoodQuery, queryParams);
+            return "시리즈 좋아요 삭제 성공";
+        } else if (patchVideoCriticReq.getCriticIdx() == 1) {
+            this.jdbcTemplate.update(updateBestQuery, queryParams);
+            return "시리즈 최고에요 삭제 성공";
+        }else {
+            this.jdbcTemplate.update(updateWorstQuery, queryParams);
+            return "시리즈 싫어요 삭제 성공";
+        }
     }
 
     public GetVideoListPageRes getVideoListPage(int videoListIdx) {
@@ -182,7 +168,6 @@ public class VideoDao {
 
     public GetVideoLinkRes getPlayVideoLink(int videoIdx) {
         String getLinkQuery = "select videoURL from Video where videoIdx = ?";
-
 
         return this.jdbcTemplate.queryForObject(getLinkQuery, (rs, rowNum)
                 -> new GetVideoLinkRes(

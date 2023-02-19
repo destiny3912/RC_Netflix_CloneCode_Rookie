@@ -4,12 +4,14 @@ import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
 import com.example.demo.src.user.model.*;
 import com.example.demo.utils.JwtService;
+import com.example.demo.utils.ValidationRegex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
-import static com.example.demo.config.BaseResponseStatus.INVALID_USER_JWT;
+import static com.example.demo.config.BaseResponseStatus.*;
 import static com.example.demo.config.Constant.BASIC_PROFILE_IMG_URL;
 
 @RestController
@@ -132,11 +134,11 @@ public class UserController {
 
     /**
      * 프로필 삭제 API
-     * [PATCH] /user/profile/{profileIdx}
+     * [DELETE] /user/profile/{profileIdx}
      * */
     @ResponseBody
-    @PatchMapping("/profile/{profileIdx}")
-    public BaseResponse<String> patchProfile(@PathVariable("profileIdx") int profileIdx, @RequestParam int userIdx) {
+    @DeleteMapping ("/profile/{profileIdx}")
+    public BaseResponse<String> deleteProfile(@PathVariable("profileIdx") int profileIdx, @RequestParam int userIdx) {
         try{
             int userIdxByJwt = jwtService.getUserIdx();
             //userIdx와 접근한 유저가 같은지 확인
@@ -144,9 +146,113 @@ public class UserController {
                 return new BaseResponse<>(INVALID_USER_JWT);
             }
 
-            return new BaseResponse<>(userService.patchProfile(profileIdx));
+            return new BaseResponse<>(userService.deleteProfile(profileIdx));
         }catch (BaseException exception) {
             return new BaseResponse<>((exception.getStatus()));
         }
     }
+
+    /**
+     * 프로필 수정 API
+     * [PATCH]/user/profile/{profileIdx}
+     * */
+    @ResponseBody
+    @PatchMapping("/profile")
+    public BaseResponse<String> patchProfile(@RequestBody PatchProfileReq patchProfileReq){
+        try{
+            int userIdxByJwt = jwtService.getUserIdx();
+            //userIdx와 접근한 유저가 같은지 확인
+            if(patchProfileReq.getUserIdx() != userIdxByJwt){
+                return new BaseResponse<>(INVALID_USER_JWT);
+            }
+
+            return new BaseResponse<>(userService.patchProfile(patchProfileReq));
+
+        }catch (BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
+    /**
+     * 게임 닉네임 설정 API
+     * [POST] /user/game/nickname
+     * */
+    @ResponseBody
+    @PostMapping("/game/nickname")
+    public BaseResponse<String> postGameNickname(@RequestBody PostGameNickReq postGameNickReq){
+        try{
+            int userIdxByJwt = jwtService.getUserIdx();
+            //userIdx와 접근한 유저가 같은지 확인
+            if(postGameNickReq.getUserIdx() != userIdxByJwt){
+                return new BaseResponse<>(INVALID_USER_JWT);
+            }
+
+            return new BaseResponse<>(userService.postGameNickname(postGameNickReq));
+        }catch (BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
+
+    /**
+     * 비밀번호 변경 API
+     * [PATCH] /user/password
+     * */
+    @ResponseBody
+    @PatchMapping("/password")
+    public BaseResponse<String> patchUserPassword(@RequestBody PatchUserPasswordReq patchUserPasswordReq){
+        try{
+            int userIdxByJwt = jwtService.getUserIdx();
+            //userIdx와 접근한 유저가 같은지 확인
+            if(patchUserPasswordReq.getUserIdx() != userIdxByJwt){
+                return new BaseResponse<>(INVALID_USER_JWT);
+            }
+
+            if(patchUserPasswordReq.getPassword().length() < 8) throw new BaseException(PW_TOO_SHORT);
+            else if (patchUserPasswordReq.getPassword().length() > 20) throw new BaseException(PW_TOO_LONG);
+
+            return new BaseResponse<>(userService.patchUserPassword(patchUserPasswordReq));
+        }catch (BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
+    /**
+     * 이메일 변경 API
+     * [PATCH] /user/email
+     * */
+    @ResponseBody
+    @PatchMapping("/email")
+    public BaseResponse<String> patchUserEmail(@RequestBody PatchUserEmailReq patchUserEmailReq){
+        try{
+            int userIdxByJwt = jwtService.getUserIdx();
+            //userIdx와 접근한 유저가 같은지 확인
+            if(patchUserEmailReq.getUserIdx() != userIdxByJwt) {
+                return new BaseResponse<>(INVALID_USER_JWT);
+            }
+            if(!ValidationRegex.isRegexEmail(patchUserEmailReq.getEmail())) throw new BaseException(POST_USERS_INVALID_EMAIL);
+
+            return new BaseResponse<>(userService.patchUserEmail(patchUserEmailReq));
+
+        }catch (BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
+    /**
+     * 전화번호 변경 API
+     * [PATCH] /user/phone
+     * */
+    @ResponseBody
+    @PatchMapping("/phone")
+    public BaseResponse<String> patchUserPhone(@RequestBody PatchUserPhoneReq patchUserPhoneReq){
+        try{
+            int userIdxByJwt = jwtService.getUserIdx();
+            //userIdx와 접근한 유저가 같은지 확인
+            if(patchUserPhoneReq.getUserIdx() != userIdxByJwt) {
+                return new BaseResponse<>(INVALID_USER_JWT);
+            }
+
+            return new BaseResponse<>(userService.patchUserPhone(patchUserPhoneReq));
+        }catch (BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
+
 }

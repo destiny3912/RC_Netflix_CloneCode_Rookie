@@ -6,6 +6,7 @@ import com.example.demo.config.secret.Secret;
 import com.example.demo.src.user.model.*;
 import com.example.demo.utils.AES128;
 import com.example.demo.utils.JwtService;
+import com.example.demo.utils.ValidationRegex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,10 +77,52 @@ public class UserService {
         }
     }
 
-    public String patchProfile(int profileIdx) throws BaseException{
+    public String deleteProfile(int profileIdx) throws BaseException{
         try{
-            return userDao.patchProfile(profileIdx);
+            return userDao.deleteProfile(profileIdx);
         }catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+    public String patchProfile(PatchProfileReq patchProfileReq) throws BaseException{
+        try{
+            return userDao.patchProfile(patchProfileReq);
+        }catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+    public String postGameNickname(PostGameNickReq postGameNickReq) throws BaseException{
+        try{
+            return userDao.postGameNickname(postGameNickReq);
+        }catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+    public String patchUserPassword(PatchUserPasswordReq patchUserPasswordReq) throws BaseException{
+        if(!ValidationRegex.isPasswordFit(patchUserPasswordReq.getPassword())) throw new BaseException(INVALID_PW);
+
+        try{
+            return userDao.patchUserPassword(patchUserPasswordReq);
+        }catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+    public String patchUserEmail(PatchUserEmailReq patchUserEmailReq) throws BaseException{
+        try{
+            return userDao.patchUserEmail(patchUserEmailReq);
+        }catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+    public String patchUserPhone(PatchUserPhoneReq patchUserPhoneReq) throws BaseException{
+        try{
+            return userDao.patchuserPhone(patchUserPhoneReq);
+        }catch (Exception exception){
             throw new BaseException(DATABASE_ERROR);
         }
     }
