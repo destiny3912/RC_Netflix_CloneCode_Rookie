@@ -31,6 +31,7 @@ public class VideoProvider {
         try{
             return videoDao.getVideoListPage(videoListIdx);
         }catch (Exception exception) {
+            logger.error(exception.getMessage());
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
         }
     }

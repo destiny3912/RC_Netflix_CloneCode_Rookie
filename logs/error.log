@@ -1,5 +1,240 @@
-10:29:52.924 ERROR [File:AuthService.java] [Func:postLogin] [Line:34] [Message:Error In Login]- Error In Login
-10:32:42.596 ERROR [File:AuthService.java] [Func:postLogin] [Line:34] [Message:Error In Login]- Error In Login
+15:28:28.858 ERROR [File:UserService.java] [Func:postSignIn] [Line:48] [Message:Error in user signin API]- Error in user signin API
+org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallback; SQL [insert into User (membershipIdx, ID, PW, userName, phone, birthday) values(?, ?, ?, ?, ?, ?)]; Cannot add or update a child row: a foreign key constraint fails (`NetflixClone`.`User`, CONSTRAINT `FK_User_membershipIdx_Membership_membershipIdx` FOREIGN KEY (`membershipIdx`) REFERENCES `Membership` (`membershipIdx`) ON DELETE RESTRICT ON UPDATE RESTRICT); nested exception is java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`NetflixClone`.`User`, CONSTRAINT `FK_User_membershipIdx_Membership_membershipIdx` FOREIGN KEY (`membershipIdx`) REFERENCES `Membership` (`membershipIdx`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:251)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70)
+	at org.springframework.jdbc.core.JdbcTemplate.translateException(JdbcTemplate.java:1541)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:667)
+	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:960)
+	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:1015)
+	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:1025)
+	at com.example.demo.src.user.UserDao.postSignIn(UserDao.java:76)
+	at com.example.demo.src.user.UserDao$$FastClassBySpringCGLIB$$fe6217c8.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692)
+	at com.example.demo.src.user.UserDao$$EnhancerBySpringCGLIB$$c417887f.postSignIn(<generated>)
+	at com.example.demo.src.user.UserService.postSignIn(UserService.java:44)
+	at com.example.demo.src.user.UserController.postSignIn(UserController.java:45)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`NetflixClone`.`User`, CONSTRAINT `FK_User_membershipIdx_Membership_membershipIdx` FOREIGN KEY (`membershipIdx`) REFERENCES `Membership` (`membershipIdx`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1347)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at org.springframework.jdbc.core.JdbcTemplate.lambda$update$2(JdbcTemplate.java:965)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:651)
+	... 98 common frames omitted
+15:29:35.621 ERROR [File:UserService.java] [Func:postSignIn] [Line:48] [Message:Error in user signin API]- Error in user signin API
+org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallback; SQL [insert into Payment (userIdx, payType, payNumber, payDesc, isSub) values(?, ?, ?, ?, ?);]; Field 'lastPayDate' doesn't have a default value; nested exception is java.sql.SQLException: Field 'lastPayDate' doesn't have a default value
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:251)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70)
+	at org.springframework.jdbc.core.JdbcTemplate.translateException(JdbcTemplate.java:1541)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:667)
+	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:960)
+	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:1015)
+	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:1025)
+	at com.example.demo.src.user.UserDao.postSignIn(UserDao.java:89)
+	at com.example.demo.src.user.UserDao$$FastClassBySpringCGLIB$$fe6217c8.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692)
+	at com.example.demo.src.user.UserDao$$EnhancerBySpringCGLIB$$c417887f.postSignIn(<generated>)
+	at com.example.demo.src.user.UserService.postSignIn(UserService.java:44)
+	at com.example.demo.src.user.UserController.postSignIn(UserController.java:45)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.sql.SQLException: Field 'lastPayDate' doesn't have a default value
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1347)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at org.springframework.jdbc.core.JdbcTemplate.lambda$update$2(JdbcTemplate.java:965)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:651)
+	... 98 common frames omitted
+15:37:43.983 ERROR [File:AuthService.java] [Func:postLogin] [Line:35] [Message:Error In Login]- Error In Login
 org.springframework.dao.IncorrectResultSizeDataAccessException: Incorrect result size: expected 1, actual 2
 	at org.springframework.dao.support.DataAccessUtils.nullableSingleResult(DataAccessUtils.java:100)
 	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:887)
@@ -13,7 +248,7 @@ org.springframework.dao.IncorrectResultSizeDataAccessException: Incorrect result
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692)
-	at com.example.demo.src.Auth.AuthDao$$EnhancerBySpringCGLIB$$b2fe2857.postLogin(<generated>)
+	at com.example.demo.src.Auth.AuthDao$$EnhancerBySpringCGLIB$$9459427f.postLogin(<generated>)
 	at com.example.demo.src.Auth.AuthService.postLogin(AuthService.java:30)
 	at com.example.demo.src.Auth.AuthController.postLogin(AuthController.java:38)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -98,8 +333,8 @@ org.springframework.dao.IncorrectResultSizeDataAccessException: Incorrect result
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:829)
-11:16:17.581 ERROR [File:VideoService.java] [Func:postScrapContent] [Line:29] [Message:Error In PostScrapContent]- Error In PostScrapContent
-org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallback; SQL [insert into VideoListScrap (videoListIdx, profileIdx) values (?, ?);]; Cannot add or update a child row: a foreign key constraint fails (`Rookie`.`VideoListScrap`, CONSTRAINT `FK_VideoListScrap_videoListIdx_VideoList_videoListIdx` FOREIGN KEY (`videoListIdx`) REFERENCES `VideoList` (`videoListIdx`) ON DELETE RESTRICT ON UPDATE ); nested exception is java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`Rookie`.`VideoListScrap`, CONSTRAINT `FK_VideoListScrap_videoListIdx_VideoList_videoListIdx` FOREIGN KEY (`videoListIdx`) REFERENCES `VideoList` (`videoListIdx`) ON DELETE RESTRICT ON UPDATE )
+15:41:01.612 ERROR [File:UserService.java] [Func:postProfile] [Line:75] [Message:Error in postProfile() in userService]- Error in postProfile() in userService
+org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallback; SQL [insert into Profile (userIdx, profileName, profilePictureURL, kids) values(?, ?, ?, ?);]; Field 'ageLimit' doesn't have a default value; nested exception is java.sql.SQLException: Field 'ageLimit' doesn't have a default value
 	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:251)
 	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70)
 	at org.springframework.jdbc.core.JdbcTemplate.translateException(JdbcTemplate.java:1541)
@@ -107,8 +342,8 @@ org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallba
 	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:960)
 	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:1015)
 	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:1025)
-	at com.example.demo.src.Video.VideoDao.postScrapContent(VideoDao.java:33)
-	at com.example.demo.src.Video.VideoDao$$FastClassBySpringCGLIB$$15357fae.invoke(<generated>)
+	at com.example.demo.src.user.UserDao.postProfile(UserDao.java:174)
+	at com.example.demo.src.user.UserDao$$FastClassBySpringCGLIB$$fe6217c8.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
@@ -117,9 +352,9 @@ org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallba
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692)
-	at com.example.demo.src.Video.VideoDao$$EnhancerBySpringCGLIB$$45a67805.postScrapContent(<generated>)
-	at com.example.demo.src.Video.VideoService.postScrapContent(VideoService.java:27)
-	at com.example.demo.src.Video.VideoController.postScrapContent(VideoController.java:50)
+	at com.example.demo.src.user.UserDao$$EnhancerBySpringCGLIB$$80b21c6e.postProfile(<generated>)
+	at com.example.demo.src.user.UserService.postProfile(UserService.java:73)
+	at com.example.demo.src.user.UserController.postProfile(UserController.java:129)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -202,8 +437,8 @@ org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallba
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:829)
-Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`Rookie`.`VideoListScrap`, CONSTRAINT `FK_VideoListScrap_videoListIdx_VideoList_videoListIdx` FOREIGN KEY (`videoListIdx`) REFERENCES `VideoList` (`videoListIdx`) ON DELETE RESTRICT ON UPDATE )
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+Caused by: java.sql.SQLException: Field 'ageLimit' doesn't have a default value
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
@@ -216,8 +451,8 @@ Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or upda
 	at org.springframework.jdbc.core.JdbcTemplate.lambda$update$2(JdbcTemplate.java:965)
 	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:651)
 	... 98 common frames omitted
-11:17:23.531 ERROR [File:VideoService.java] [Func:postScrapContent] [Line:29] [Message:Error In PostScrapContent]- Error In PostScrapContent
-org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallback; SQL [insert into VideoListScrap (videoListIdx, profileIdx) values (?, ?);]; Cannot add or update a child row: a foreign key constraint fails (`Rookie`.`VideoListScrap`, CONSTRAINT `FK_VideoListScrap_videoListIdx_VideoList_videoListIdx` FOREIGN KEY (`videoListIdx`) REFERENCES `VideoList` (`videoListIdx`) ON DELETE RESTRICT ON UPDATE ); nested exception is java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`Rookie`.`VideoListScrap`, CONSTRAINT `FK_VideoListScrap_videoListIdx_VideoList_videoListIdx` FOREIGN KEY (`videoListIdx`) REFERENCES `VideoList` (`videoListIdx`) ON DELETE RESTRICT ON UPDATE )
+15:41:40.628 ERROR [File:UserService.java] [Func:postProfile] [Line:75] [Message:Error in postProfile() in userService]- Error in postProfile() in userService
+org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallback; SQL [insert into Profile (userIdx, profileName, profilePictureURL, kids) values(?, ?, ?, ?);]; Field 'language' doesn't have a default value; nested exception is java.sql.SQLException: Field 'language' doesn't have a default value
 	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:251)
 	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70)
 	at org.springframework.jdbc.core.JdbcTemplate.translateException(JdbcTemplate.java:1541)
@@ -225,8 +460,8 @@ org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallba
 	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:960)
 	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:1015)
 	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:1025)
-	at com.example.demo.src.Video.VideoDao.postScrapContent(VideoDao.java:33)
-	at com.example.demo.src.Video.VideoDao$$FastClassBySpringCGLIB$$15357fae.invoke(<generated>)
+	at com.example.demo.src.user.UserDao.postProfile(UserDao.java:174)
+	at com.example.demo.src.user.UserDao$$FastClassBySpringCGLIB$$fe6217c8.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
@@ -235,9 +470,9 @@ org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallba
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692)
-	at com.example.demo.src.Video.VideoDao$$EnhancerBySpringCGLIB$$45a67805.postScrapContent(<generated>)
-	at com.example.demo.src.Video.VideoService.postScrapContent(VideoService.java:27)
-	at com.example.demo.src.Video.VideoController.postScrapContent(VideoController.java:50)
+	at com.example.demo.src.user.UserDao$$EnhancerBySpringCGLIB$$80b21c6e.postProfile(<generated>)
+	at com.example.demo.src.user.UserService.postProfile(UserService.java:73)
+	at com.example.demo.src.user.UserController.postProfile(UserController.java:129)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -320,8 +555,8 @@ org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallba
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:829)
-Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`Rookie`.`VideoListScrap`, CONSTRAINT `FK_VideoListScrap_videoListIdx_VideoList_videoListIdx` FOREIGN KEY (`videoListIdx`) REFERENCES `VideoList` (`videoListIdx`) ON DELETE RESTRICT ON UPDATE )
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+Caused by: java.sql.SQLException: Field 'language' doesn't have a default value
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
@@ -334,8 +569,8 @@ Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or upda
 	at org.springframework.jdbc.core.JdbcTemplate.lambda$update$2(JdbcTemplate.java:965)
 	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:651)
 	... 98 common frames omitted
-11:17:49.633 ERROR [File:VideoService.java] [Func:postScrapContent] [Line:29] [Message:Error In PostScrapContent]- Error In PostScrapContent
-org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallback; SQL [insert into VideoListScrap (videoListIdx, profileIdx) values (?, ?);]; Cannot add or update a child row: a foreign key constraint fails (`Rookie`.`VideoListScrap`, CONSTRAINT `FK_VideoListScrap_profileIdx_Profile_profileIdx` FOREIGN KEY (`profileIdx`) REFERENCES `Profile` (`profileIdx`) ON DELETE RESTRICT ON UPDATE RESTRICT); nested exception is java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`Rookie`.`VideoListScrap`, CONSTRAINT `FK_VideoListScrap_profileIdx_Profile_profileIdx` FOREIGN KEY (`profileIdx`) REFERENCES `Profile` (`profileIdx`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+15:42:33.400 ERROR [File:UserService.java] [Func:postProfile] [Line:75] [Message:Error in postProfile() in userService]- Error in postProfile() in userService
+org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallback; SQL [insert into Profile (userIdx, profileName, profilePictureURL, kids) values(?, ?, ?, ?);]; Field 'gameNickname' doesn't have a default value; nested exception is java.sql.SQLException: Field 'gameNickname' doesn't have a default value
 	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:251)
 	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70)
 	at org.springframework.jdbc.core.JdbcTemplate.translateException(JdbcTemplate.java:1541)
@@ -343,8 +578,8 @@ org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallba
 	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:960)
 	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:1015)
 	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:1025)
-	at com.example.demo.src.Video.VideoDao.postScrapContent(VideoDao.java:33)
-	at com.example.demo.src.Video.VideoDao$$FastClassBySpringCGLIB$$15357fae.invoke(<generated>)
+	at com.example.demo.src.user.UserDao.postProfile(UserDao.java:174)
+	at com.example.demo.src.user.UserDao$$FastClassBySpringCGLIB$$fe6217c8.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
@@ -353,9 +588,9 @@ org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallba
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692)
-	at com.example.demo.src.Video.VideoDao$$EnhancerBySpringCGLIB$$45a67805.postScrapContent(<generated>)
-	at com.example.demo.src.Video.VideoService.postScrapContent(VideoService.java:27)
-	at com.example.demo.src.Video.VideoController.postScrapContent(VideoController.java:50)
+	at com.example.demo.src.user.UserDao$$EnhancerBySpringCGLIB$$80b21c6e.postProfile(<generated>)
+	at com.example.demo.src.user.UserService.postProfile(UserService.java:73)
+	at com.example.demo.src.user.UserController.postProfile(UserController.java:129)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -438,8 +673,8 @@ org.springframework.dao.DataIntegrityViolationException: PreparedStatementCallba
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:829)
-Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`Rookie`.`VideoListScrap`, CONSTRAINT `FK_VideoListScrap_profileIdx_Profile_profileIdx` FOREIGN KEY (`profileIdx`) REFERENCES `Profile` (`profileIdx`) ON DELETE RESTRICT ON UPDATE RESTRICT)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+Caused by: java.sql.SQLException: Field 'gameNickname' doesn't have a default value
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
@@ -452,239 +687,110 @@ Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or upda
 	at org.springframework.jdbc.core.JdbcTemplate.lambda$update$2(JdbcTemplate.java:965)
 	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:651)
 	... 98 common frames omitted
-11:41:58.697 ERROR [File:VideoService.java] [Func:postBest] [Line:62] [Message:Error In postBest]- Error In postBest
-org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [update VideoCriticBest set status = 'ACTIVE' where profileIdx = ? and videoListIdx = ?;]; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'status' in 'field list'
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:239)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70)
-	at org.springframework.jdbc.core.JdbcTemplate.translateException(JdbcTemplate.java:1541)
-	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:667)
-	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:960)
-	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:1015)
-	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:1025)
-	at com.example.demo.src.Video.VideoDao.postBest(VideoDao.java:80)
-	at com.example.demo.src.Video.VideoDao$$FastClassBySpringCGLIB$$15357fae.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692)
-	at com.example.demo.src.Video.VideoDao$$EnhancerBySpringCGLIB$$c58b9134.postBest(<generated>)
-	at com.example.demo.src.Video.VideoService.postBest(VideoService.java:60)
-	at com.example.demo.src.Video.VideoController.postBest(VideoController.java:126)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:105)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:829)
-Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'status' in 'field list'
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1347)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025)
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
-	at org.springframework.jdbc.core.JdbcTemplate.lambda$update$2(JdbcTemplate.java:965)
-	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:651)
-	... 98 common frames omitted
-11:43:04.649 ERROR [File:VideoService.java] [Func:postBest] [Line:62] [Message:Error In postBest]- Error In postBest
-org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [update VideoCriticBest set sttus = 'ACTIVE' where profileIdx = ? and videoListIdx = ?;]; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'sttus' in 'field list'
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:239)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70)
-	at org.springframework.jdbc.core.JdbcTemplate.translateException(JdbcTemplate.java:1541)
-	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:667)
-	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:960)
-	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:1015)
-	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:1025)
-	at com.example.demo.src.Video.VideoDao.postBest(VideoDao.java:80)
-	at com.example.demo.src.Video.VideoDao$$FastClassBySpringCGLIB$$15357fae.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692)
-	at com.example.demo.src.Video.VideoDao$$EnhancerBySpringCGLIB$$100037b2.postBest(<generated>)
-	at com.example.demo.src.Video.VideoService.postBest(VideoService.java:60)
-	at com.example.demo.src.Video.VideoController.postBest(VideoController.java:126)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:105)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:829)
-Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'sttus' in 'field list'
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1347)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025)
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
-	at org.springframework.jdbc.core.JdbcTemplate.lambda$update$2(JdbcTemplate.java:965)
-	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:651)
-	... 98 common frames omitted
+17:11:48.211 ERROR [File:VideoProvider.java] [Func:getVideoListPage] [Line:34] [Message:Error in List page]- Error in List page
+17:12:08.521 ERROR [File:VideoProvider.java] [Func:getVideoListPage] [Line:34] [Message:PreparedStatementCallback; bad SQL grammar [SELECT VL.videoListIdx, VL.videoListName, VL.videoListPlot, VL.videoListCharater,
+       VL.videoListSince, VL.videoListTeaser, VL.ageLimit,
+       VL.releaseDate, VL.language,
+       group_concat(distinct Actors.actorName) as actors,
+       group_concat(distinct Creators.creatorName) as creators,
+       group_concat(distinct V.episode) as episodeNum,
+       group_concat(distinct V.videoName) as episodeName,
+       group_concat(distinct V.videoURL) as episodeURL,
+       group_concat(distinct V.videoPlot) as episodePlot,
+       count(distinct V.videoIdx) as episodeCount
+FROM
+    VideoList as VL
+        left join
+    (SELECT videoListIdx, Actor.actorIdx, actorName
+     FROM Actor left join ActorVideoListMatching AVLM
+                          on Actor.actorIdx = AVLM.actorIdx WHERE videoListIdx = ? order by actorIdx) as Actors
+    on Actors.videoListIdx = VL.videoListIdx
+        left join
+    (SELECT videoListIdx, Creator.creatorIdx, creatorName
+     FROM Creator left join CreatorVideoListMatching CVLM
+                            on Creator.creatorIdx = CVLM.creatorIdx WHERE videoListIdx = ? order by creatorIdx) as Creators
+    on Creators.videoListIdx = VL.videoListIdx
+        left join
+    (SELECT videoListIdx, videoIdx, episode, videoName, videoPlot, videoURL
+     FROM Video WHERE videoListIdx = ? order by videoIdx) as V
+    on V.videoListIdx = VL.videoListIdx
+WHERE V.videoListIdx = ?;]; nested exception is java.sql.SQLSyntaxErrorException: Table 'NetflixClone.ActorVideoListMatching' doesn't exist]- PreparedStatementCallback; bad SQL grammar [SELECT VL.videoListIdx, VL.videoListName, VL.videoListPlot, VL.videoListCharater,
+       VL.videoListSince, VL.videoListTeaser, VL.ageLimit,
+       VL.releaseDate, VL.language,
+       group_concat(distinct Actors.actorName) as actors,
+       group_concat(distinct Creators.creatorName) as creators,
+       group_concat(distinct V.episode) as episodeNum,
+       group_concat(distinct V.videoName) as episodeName,
+       group_concat(distinct V.videoURL) as episodeURL,
+       group_concat(distinct V.videoPlot) as episodePlot,
+       count(distinct V.videoIdx) as episodeCount
+FROM
+    VideoList as VL
+        left join
+    (SELECT videoListIdx, Actor.actorIdx, actorName
+     FROM Actor left join ActorVideoListMatching AVLM
+                          on Actor.actorIdx = AVLM.actorIdx WHERE videoListIdx = ? order by actorIdx) as Actors
+    on Actors.videoListIdx = VL.videoListIdx
+        left join
+    (SELECT videoListIdx, Creator.creatorIdx, creatorName
+     FROM Creator left join CreatorVideoListMatching CVLM
+                            on Creator.creatorIdx = CVLM.creatorIdx WHERE videoListIdx = ? order by creatorIdx) as Creators
+    on Creators.videoListIdx = VL.videoListIdx
+        left join
+    (SELECT videoListIdx, videoIdx, episode, videoName, videoPlot, videoURL
+     FROM Video WHERE videoListIdx = ? order by videoIdx) as V
+    on V.videoListIdx = VL.videoListIdx
+WHERE V.videoListIdx = ?;]; nested exception is java.sql.SQLSyntaxErrorException: Table 'NetflixClone.ActorVideoListMatching' doesn't exist
+17:13:34.069 ERROR [File:VideoProvider.java] [Func:getVideoListPage] [Line:34] [Message:PreparedStatementCallback; bad SQL grammar [SELECT VL.videoListIdx, VL.videoListName, VL.videoListPlot, VL.videoListCharater,
+       VL.videoListSince, VL.videoListTeaser, VL.ageLimit,
+       VL.releaseDate, VL.language,
+       group_concat(distinct Actors.actorName) as actors,
+       group_concat(distinct Creators.creatorName) as creators,
+       group_concat(distinct V.episode) as episodeNum,
+       group_concat(distinct V.videoName) as episodeName,
+       group_concat(distinct V.videoURL) as episodeURL,
+       group_concat(distinct V.videoPlot) as episodePlot,
+       count(distinct V.videoIdx) as episodeCount
+FROM
+    VideoList as VL
+        left join
+    (SELECT videoListIdx, Actor.actorIdx, actorName
+     FROM Actor left join ActorVideoListMatching AVLM
+                          on Actor.actorIdx = AVLM.actorIdx WHERE videoListIdx = ? order by actorIdx) as Actors
+    on Actors.videoListIdx = VL.videoListIdx
+        left join
+    (SELECT videoListIdx, Creator.creatorIdx, creatorName
+     FROM Creator left join CreatorVideoListMatching CVLM
+                            on Creator.creatorIdx = CVLM.creatorIdx WHERE videoListIdx = ? order by creatorIdx) as Creators
+    on Creators.videoListIdx = VL.videoListIdx
+        left join
+    (SELECT videoListIdx, videoIdx, episode, videoName, videoPlot, videoURL
+     FROM Video WHERE videoListIdx = ? order by videoIdx) as V
+    on V.videoListIdx = VL.videoListIdx
+WHERE V.videoListIdx = ?;]; nested exception is java.sql.SQLSyntaxErrorException: Table 'NetflixClone.ActorVideoListMatching' doesn't exist]- PreparedStatementCallback; bad SQL grammar [SELECT VL.videoListIdx, VL.videoListName, VL.videoListPlot, VL.videoListCharater,
+       VL.videoListSince, VL.videoListTeaser, VL.ageLimit,
+       VL.releaseDate, VL.language,
+       group_concat(distinct Actors.actorName) as actors,
+       group_concat(distinct Creators.creatorName) as creators,
+       group_concat(distinct V.episode) as episodeNum,
+       group_concat(distinct V.videoName) as episodeName,
+       group_concat(distinct V.videoURL) as episodeURL,
+       group_concat(distinct V.videoPlot) as episodePlot,
+       count(distinct V.videoIdx) as episodeCount
+FROM
+    VideoList as VL
+        left join
+    (SELECT videoListIdx, Actor.actorIdx, actorName
+     FROM Actor left join ActorVideoListMatching AVLM
+                          on Actor.actorIdx = AVLM.actorIdx WHERE videoListIdx = ? order by actorIdx) as Actors
+    on Actors.videoListIdx = VL.videoListIdx
+        left join
+    (SELECT videoListIdx, Creator.creatorIdx, creatorName
+     FROM Creator left join CreatorVideoListMatching CVLM
+                            on Creator.creatorIdx = CVLM.creatorIdx WHERE videoListIdx = ? order by creatorIdx) as Creators
+    on Creators.videoListIdx = VL.videoListIdx
+        left join
+    (SELECT videoListIdx, videoIdx, episode, videoName, videoPlot, videoURL
+     FROM Video WHERE videoListIdx = ? order by videoIdx) as V
+    on V.videoListIdx = VL.videoListIdx
+WHERE V.videoListIdx = ?;]; nested exception is java.sql.SQLSyntaxErrorException: Table 'NetflixClone.ActorVideoListMatching' doesn't exist

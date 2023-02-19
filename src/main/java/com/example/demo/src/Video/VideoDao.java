@@ -53,7 +53,7 @@ public class VideoDao {
 
         String checkWorstRowExistQuery = "select exists(select profileIdx, videoListIdx from VideoCriticWorst where profileIdx = ? and videoListIdx = ? )";
         String insertWorstQuery = "insert into VideoCriticWorst (profileIdx, videoListIdx) values(?, ?);";
-        String updateWorstQuery = "update VideoCriticWorst set status = 'ACTIVE' where profileIdx = ? and videoListIdx = ?;";
+        String updateWorstQuery = "update VideoCriticWorst set staus = 'ACTIVE' where profileIdx = ? and videoListIdx = ?;";
 
         Object[] queryParams = new Object[] {postVideoCriticReq.getProfileIdx(), postVideoCriticReq.getVideoListIdx()};
 
@@ -86,7 +86,7 @@ public class VideoDao {
     public String patchCritic(PatchVideoCriticReq patchVideoCriticReq) {
         String updateGoodQuery = "update VideoCriticGood set status = 'INACTIVE' where profileIdx = ? and videoListIdx = ?;";
         String updateBestQuery = "update VideoCriticBest set staus = 'INACTIVE' where profileIdx = ? and videoListIdx = ?;";
-        String updateWorstQuery = "update VideoCriticWorst set status = 'INACTIVE' where profileIdx = ? and videoListIdx = ?;";
+        String updateWorstQuery = "update VideoCriticWorst set staus = 'INACTIVE' where profileIdx = ? and videoListIdx = ?;";
 
         Object[] queryParams = new Object[] {patchVideoCriticReq.getProfileIdx(), patchVideoCriticReq.getVideoListIdx()};
         
@@ -118,12 +118,12 @@ public class VideoDao {
                         "    VideoList as VL\n" +
                         "        left join\n" +
                         "    (SELECT videoListIdx, Actor.actorIdx, actorName\n" +
-                        "     FROM Actor left join ActorVideoListMatching AVLM\n" +
+                        "     FROM Actor left join ActorVideoListMaching AVLM\n" +
                         "                          on Actor.actorIdx = AVLM.actorIdx WHERE videoListIdx = ? order by actorIdx) as Actors\n" +
                         "    on Actors.videoListIdx = VL.videoListIdx\n" +
                         "        left join\n" +
                         "    (SELECT videoListIdx, Creator.creatorIdx, creatorName\n" +
-                        "     FROM Creator left join CreatorVideoListMatching CVLM\n" +
+                        "     FROM Creator left join CreatorVideoListMaching CVLM\n" +
                         "                            on Creator.creatorIdx = CVLM.creatorIdx WHERE videoListIdx = ? order by creatorIdx) as Creators\n" +
                         "    on Creators.videoListIdx = VL.videoListIdx\n" +
                         "        left join\n" +

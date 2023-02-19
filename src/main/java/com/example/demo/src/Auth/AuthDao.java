@@ -19,7 +19,7 @@ public class AuthDao {
     }
 
     public User postLogin(PostLoginReq postLoginReq) {
-        String getInfoQuery = "select userIdx from User where ID = ? and PW = ?";
+        String getInfoQuery = "select userIdx from User where ID = ? and PW = ? and staus = 'ACTIVE'";
 
         Object[] getInfoParams = new Object[] {
                 postLoginReq.getUserId(),
